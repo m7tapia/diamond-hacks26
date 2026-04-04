@@ -31,7 +31,8 @@ export function ManagePageClient({ masterToken }: { masterToken: string }) {
     }
   }, [masterToken]);
 
-  useEffect(() => { load(); }, [load]);
+  // eslint-disable-next-line react-hooks/set-state-in-effect
+  useEffect(() => { void load(); }, [load]);
 
   if (error) {
     return (

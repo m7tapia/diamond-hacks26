@@ -29,17 +29,10 @@ export function RegistrationForm() {
         return;
       }
 
-      if (data.exists) {
-        setMessage({
-          type: 'success',
-          text: '✅ Sign-in link sent! Check your email to access your alerts.',
-        });
-      } else {
-        setMessage({
-          type: 'success',
-          text: '🎉 Welcome! Check your email for your personal alerts link.',
-        });
-        setEmail('');
+      // Redirect straight to the manage page
+      if (data.manageUrl) {
+        window.location.href = data.manageUrl;
+        return;
       }
     } catch {
       setMessage({ type: 'error', text: 'Network error — please try again' });

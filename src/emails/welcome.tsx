@@ -25,7 +25,7 @@ export function WelcomeEmail({ manageUrl }: WelcomeEmailProps) {
           <Heading style={heading}>🏆 Welcome to Market-Alchemy AI</Heading>
           <Text style={text}>
             You&apos;re all set! Market-Alchemy will automatically scout Facebook
-            Marketplace, OfferUp, Craigslist, and eBay for the best deals — and
+            Marketplace, OfferUp, and Craigslist for the best deals — and
             email you rich digests of top-value finds.
           </Text>
           <Text style={text}>

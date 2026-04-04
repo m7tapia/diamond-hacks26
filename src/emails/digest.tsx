@@ -26,7 +26,6 @@ const PLATFORM_LABELS: Record<string, string> = {
   facebook: 'Facebook Marketplace',
   offerup: 'OfferUp',
   craigslist: 'Craigslist',
-  ebay: 'eBay',
 };
 
 export function DigestEmail({ alert, listings, manageUrl, unsubscribeUrl }: DigestEmailProps) {

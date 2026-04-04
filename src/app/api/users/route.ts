@@ -22,9 +22,15 @@ export async function POST(req: NextRequest) {
       .single();
 
     if (existing) {
-      // Send magic link to existing user
-      await sendMagicLinkEmail(email, existing.master_token);
-      return NextResponse.json({ exists: true, message: 'Sign-in link sent to your email' });
+      // Send magic link to existing user (best-effort)
+      sendMagicLinkEmail(email, existing.master_token).catch((e) =>
+        console.error('[email] Magic link failed:', e)
+      );
+      return NextResponse.json({
+        exists: true,
+        message: 'Sign-in link sent to your email',
+        manageUrl: `/manage/${existing.master_token}`,
+      });
     }
 
     // Create new user
@@ -40,12 +46,16 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Failed to create account' }, { status: 500 });
     }
 
-    await sendWelcomeEmail(newUser);
+    // Send welcome email (best-effort — don't block the user)
+    sendWelcomeEmail(newUser).catch((e) =>
+      console.error('[email] Welcome email failed:', e)
+    );
 
     return NextResponse.json({
       exists: false,
       master_token: newUser.master_token,
       message: 'Welcome email sent',
+      manageUrl: `/manage/${newUser.master_token}`,
     });
   } catch (e) {
     console.error('/api/users error:', e);

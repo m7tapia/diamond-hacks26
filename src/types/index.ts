@@ -1,6 +1,6 @@
 export type AlertInterval = 'hourly' | '6h' | 'daily' | 'weekly';
 export type AlertStatus = 'active' | 'paused' | 'cancelled';
-export type Platform = 'facebook' | 'offerup' | 'craigslist' | 'ebay';
+export type Platform = 'facebook' | 'offerup' | 'craigslist';
 
 export interface User {
   id: string;

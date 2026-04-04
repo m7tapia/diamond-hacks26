@@ -11,7 +11,7 @@ export default function Home() {
         </h1>
         <p className="text-zinc-400 text-lg leading-relaxed">
           Set-it-and-forget-it deal scouting across Facebook Marketplace, OfferUp,
-          Craigslist, and eBay. Enter your email to get started — no password needed.
+          Craigslist. Enter your email to get started — no password needed.
         </p>
       </div>
 
@@ -28,7 +28,7 @@ export default function Home() {
       {/* Features */}
       <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl text-center">
         {[
-          { icon: '🔍', title: '4 Marketplaces', desc: 'Facebook, OfferUp, Craigslist, and eBay — searched automatically' },
+          { icon: '🔍', title: '3 Marketplaces', desc: 'Facebook Marketplace, OfferUp, and Craigslist — searched automatically' },
           { icon: '⭐', title: 'Scout Score', desc: 'Every listing scored 0–100 for value and match quality' },
           { icon: '📧', title: 'Email Digests', desc: 'Rich deal emails delivered on your schedule, zero effort' },
         ].map((f) => (

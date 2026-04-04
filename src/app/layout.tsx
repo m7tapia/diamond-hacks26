@@ -7,7 +7,7 @@ const geist = Geist({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Market-Alchemy AI — Automated Deal Scouting",
   description:
-    "Set-it-and-forget-it deal alerts across Facebook Marketplace, OfferUp, Craigslist, and eBay.",
+    "Set-it-and-forget-it deal alerts across Facebook Marketplace, OfferUp, and Craigslist.",
 };
 
 export default function RootLayout({
