@@ -110,7 +110,7 @@ export function AlertForm({ masterToken, existing, onSuccess, onCancel }: AlertF
             <SelectTrigger className="bg-zinc-800 border-zinc-700 text-zinc-100 focus:border-amber-500">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent className="bg-zinc-800 border-zinc-700">
+            <SelectContent className="bg-zinc-800 border-zinc-700 text-zinc-100">
               <SelectItem value="hourly">Hourly</SelectItem>
               <SelectItem value="6h">Every 6 hours</SelectItem>
               <SelectItem value="daily">Daily</SelectItem>
