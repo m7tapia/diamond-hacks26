@@ -8,8 +8,8 @@ Deal-scouting web app that scrapes Facebook Marketplace, OfferUp, Craigslist, an
 - **Styling:** Tailwind CSS + shadcn/ui
 - **Validation:** Zod
 - **Database:** Supabase Postgres
-- **Scraping:** Browser Use Cloud SDK v3
-- **LLM:** Gemini 2.0 Flash (@google/genai) for scoring + summarization
+- **Scraping:** Browser Use Cloud SDK v3 (Claude Sonnet 4.6)
+- **LLM:** Groq (Llama 3.3 70B) for scoring + summarization
 - **Email:** Resend + React Email
 - **Scheduling:** node-cron (in-process)
 - **Icons:** Lucide React
@@ -23,8 +23,8 @@ npm run lint         # ESLint
 
 ## Architecture
 - `src/lib/pipeline.ts` — Core orchestrator: scrape → score → email
-- `src/lib/scraper.ts` — Browser Use Cloud integration (4 marketplaces in parallel)
-- `src/lib/scorer.ts` — Gemini 2.0 Flash batch scoring + summarization
+- `src/lib/scraper.ts` — Browser Use Cloud integration (Claude Sonnet 4.6 agents, 3 marketplaces in parallel)
+- `src/lib/scorer.ts` — Groq (Llama 3.3 70B) batch scoring + summarization
 - `src/lib/scheduler.ts` — node-cron job manager, bootstraps from DB on server start
 - `src/lib/email.ts` — Resend wrapper for all email types
 - `src/emails/` — React Email templates (welcome, magic-link, digest)
@@ -39,7 +39,7 @@ No passwords. Token-based only:
 All keys go in `.env.local`:
 - `NEXT_PUBLIC_SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`
 - `BROWSER_USE_API_KEY`
-- `GEMINI_API_KEY`
+- `GROQ_API_KEY`
 - `RESEND_API_KEY`
 - `APP_BASE_URL` (default: http://localhost:3000)
 - `RESEND_FROM_EMAIL`
