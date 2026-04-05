@@ -11,7 +11,7 @@ export default function Home() {
         </h1>
         <p className="text-zinc-400 text-lg leading-relaxed">
           Set-it-and-forget-it deal scouting across Facebook Marketplace, OfferUp,
-          Craigslist. Enter your email to get started — no password needed.
+          Craigslist. Secure your account with email and password to keep your deals private.
         </p>
       </div>
 
@@ -19,7 +19,7 @@ export default function Home() {
       <div className="w-full max-w-md bg-zinc-900 border border-zinc-800 rounded-xl p-8 shadow-xl">
         <h2 className="text-xl font-semibold text-zinc-100 mb-2">Get Started</h2>
         <p className="text-zinc-500 text-sm mb-6">
-          Enter your email to jump straight into your dashboard — no password needed.
+          Create an account or sign in with your email and password. Your account and alerts are yours alone.
         </p>
         <RegistrationForm />
       </div>

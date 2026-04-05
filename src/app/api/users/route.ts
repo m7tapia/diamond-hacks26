@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { hash } from 'bcryptjs';
 import { supabase } from '@/lib/supabase';
 import { generateToken } from '@/lib/tokens';
 import { RegisterSchema } from '@/lib/validators';
@@ -8,26 +9,50 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const parsed = RegisterSchema.safeParse(body);
     if (!parsed.success) {
-      return NextResponse.json({ error: 'Invalid email' }, { status: 400 });
+      return NextResponse.json({ error: 'Invalid input' }, { status: 400 });
     }
 
-    const { email } = parsed.data;
+    const { email, password } = parsed.data;
 
     // Check if user already exists
     const { data: existing } = await supabase
       .from('users')
-      .select('id, email, master_token, created_at')
+      .select('id, email, master_token, password_hash')
       .eq('email', email)
       .single();
-    
+
     if (existing) {
-      return NextResponse.json({ manageUrl: `/manage/${existing.master_token}` });
+      if (!existing.password_hash) {
+        const password_hash = await hash(password, 10);
+        const { data: updatedUser, error: updateError } = await supabase
+          .from('users')
+          .update({ password_hash })
+          .eq('id', existing.id)
+          .select()
+          .single();
+
+        if (updateError || !updatedUser) {
+          console.error('Failed to update password for existing user:', updateError);
+          return NextResponse.json({ error: 'Failed to update password' }, { status: 500 });
+        }
+
+        return NextResponse.json({
+          exists: true,
+          master_token: updatedUser.master_token,
+          message: 'Password created successfully',
+        });
+      }
+
+      return NextResponse.json({ error: 'Account already exists. Please sign in instead.' }, { status: 400 });
     }
 
+    // Hash password
+    const password_hash = await hash(password, 10);
     const master_token = generateToken();
+    
     const { data: newUser, error } = await supabase
       .from('users')
-      .insert({ email, master_token })
+      .insert({ email, password_hash, master_token })
       .select()
       .single();
 
@@ -39,7 +64,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({
       exists: false,
       master_token: newUser.master_token,
-      message: 'Welcome email sent',
+      message: 'Account created successfully',
     });
   } catch (e) {
     console.error('/api/users error:', e);

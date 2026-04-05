@@ -13,6 +13,8 @@
     "@google/genai": "^1.48.0",
     "@react-email/components": "^1.0.11",
     "@supabase/supabase-js": "^2.101.1",
+    "@types/bcryptjs": "^2.4.6",
+    "bcryptjs": "^3.0.3",
     "browser-use-sdk": "^3.4.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
