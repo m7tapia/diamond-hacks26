@@ -66,13 +66,14 @@ export function ManagePageClient({ masterToken }: { masterToken: string }) {
             <p className="text-zinc-500 text-sm">
               Manage alerts for <span className="text-zinc-300">{user.email}</span>
             </p>
+
+            <Button
+              onClick={() => window.location.href = '/'}
+              className="bg-zinc-800 hover:bg-zinc-700 text-zinc-100"
+            >
+              Log out
+            </Button>
           </div>
-          <Button
-            onClick={() => window.location.href = '/'}
-            className="bg-zinc-800 hover:bg-zinc-700 text-zinc-100"
-          >
-            Log out
-          </Button>
         </div>
 
         {/* Add Alert */}
