@@ -133,7 +133,7 @@ export function AlertCard({ alert, masterToken, onRefresh }: AlertCardProps) {
               variant="outline"
               disabled={!!loading}
               onClick={() => patchStatus('paused')}
-              className="border-zinc-700 text-zinc-300 hover:text-zinc-100 text-xs"
+              className="border-zinc-700 bg-white text-black hover:bg-zinc-100 text-xs"
             >
               {loading === 'paused' ? 'Pausing...' : 'Pause'}
             </Button>
@@ -153,7 +153,7 @@ export function AlertCard({ alert, masterToken, onRefresh }: AlertCardProps) {
             size="sm"
             variant="outline"
             onClick={() => setEditing(true)}
-            className="border-zinc-700 text-zinc-300 hover:text-zinc-100 text-xs"
+            className="border-zinc-700 bg-white text-black hover:bg-zinc-100 text-xs"
           >
             Edit
           </Button>
