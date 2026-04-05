@@ -39,7 +39,7 @@ export function DigestEmail({ alert, listings, manageUrl, unsubscribeUrl }: Dige
         <Container style={container}>
           {/* Header */}
           <Section style={header}>
-            <Heading style={headerTitle}> BELFORD TIPS NEWEST DEAL DIGEST</Heading>
+            <Heading style={headerTitle}> BELFORD TIPS DEAL DIGEST</Heading>
             <Text style={headerSub}>
               {alert.item} · {alert.location} · {date}
             </Text>
