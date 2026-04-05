@@ -24,3 +24,5 @@ export async function sendDigestEmail(
     react: DigestEmail({ alert, listings, manageUrl, unsubscribeUrl }),
   });
 }
+
+

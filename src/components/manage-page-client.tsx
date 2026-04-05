@@ -63,10 +63,16 @@ export function ManagePageClient({ masterToken }: { masterToken: string }) {
           <div className="flex items-center gap-2 mb-1">
             <span className="text-2xl"></span>
             <h1 className="text-2xl font-bold text-amber-400">Belfort Tips</h1>
+            <p className="text-zinc-500 text-sm">
+              Manage alerts for <span className="text-zinc-300">{user.email}</span>
+            </p>
           </div>
-          <p className="text-zinc-500 text-sm">
-            Manage alerts for <span className="text-zinc-300">{user.email}</span>
-          </p>
+          <Button
+            onClick={() => window.location.href = '/'}
+            className="bg-zinc-800 hover:bg-zinc-700 text-zinc-100"
+          >
+            Log out
+          </Button>
         </div>
 
         {/* Add Alert */}
