@@ -32,7 +32,7 @@ export default function Home() {
       {/* Features */}
       <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl text-center">
         {[
-          { icon: '🔍', title: '3 Marketplaces', desc: 'Facebook Marketplace, OfferUp, and Craigslist — searched automatically' },
+          { icon: '🔍', title: 'OfferUp', desc: 'OfferUp searched automatically for the best local deals' },
           { icon: '⭐', title: 'Scout Score', desc: 'Every listing scored 0–100 for value and match quality' },
           { icon: '📧', title: 'Email Digests', desc: 'Rich deal emails delivered on your schedule, zero effort' },
         ].map((f) => (
