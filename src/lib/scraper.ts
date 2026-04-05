@@ -49,7 +49,7 @@ function buildPrompt(platform: Platform, item: string, location: string, radiusM
   const n = MAX_LISTINGS_PER_PLATFORM;
 
   const instructions: Record<Platform, string> = {
-    facebook: `Go to https://www.facebook.com/marketplace. Search for "${item}". Set the location to "${location}" and radius to ${radiusMiles} miles if possible. Extract up to ${n} listings.`,
+    facebook: `Go to https://www.facebook.com/marketplace. If a pop up opens prompting you to log in, close it with the x button. Search for "${item}". Set the location to "${location}" and radius to ${radiusMiles} miles if possible. Extract up to ${n} listings.`,
     offerup: `Go to https://offerup.com. Search for "${item}". Set location to "${location}" if possible. Extract up to ${n} listings.`,
     craigslist: `Go to https://craigslist.org. Search for "${item}". Set location/postal code to "${location}" and distance to ${radiusMiles} miles. Extract up to ${n} listings.`,
   };
