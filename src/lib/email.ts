@@ -20,7 +20,7 @@ export async function sendDigestEmail(
   await getResend().emails.send({
     from: FROM,
     to: user.email,
-    subject: `🏆 Market-Alchemy: ${listings.length} deal${listings.length === 1 ? '' : 's'} found for "${alert.item}" near ${alert.location}`,
+    subject: ` Market-Alchemy: ${listings.length} deal${listings.length === 1 ? '' : 's'} found for "${alert.item}" near ${alert.location}`,
     react: DigestEmail({ alert, listings, manageUrl, unsubscribeUrl }),
   });
 }

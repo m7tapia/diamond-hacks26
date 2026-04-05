@@ -5,9 +5,9 @@ import "./globals.css";
 const geist = Geist({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Market-Alchemy AI — Automated Deal Scouting",
+  title: "Belfort Tips — Automated Deal Scouting",
   description:
-    "Set-it-and-forget-it deal alerts across Facebook Marketplace, OfferUp, and Craigslist.",
+    "Stay ahead of the competition by finding timely steals across various marketplaces. Set your preferences, and let us do the heavy lifting in your deal-hunting journey.",
 };
 
 export default function RootLayout({

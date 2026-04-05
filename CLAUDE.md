@@ -1,4 +1,4 @@
-# Market-Alchemy AI
+# Belfort Tips
 
 ## Project Overview
 Deal-scouting web app that scrapes Facebook Marketplace, OfferUp, Craigslist, and eBay, scores listings with a "Scout Score", and emails users rich digests of the best deals. Built for DiamondHacks hackathon.

@@ -1,4 +1,4 @@
-# Market-Alchemy AI — Implementation Plan
+# Belfort Tips — Implementation Plan
 
 ## Context
 Building a deal-scouting web app for DiamondHacks hackathon. Users register with email, create search alerts for items on local marketplaces, and receive rich email digests with scored listings. Priority: working end-to-end demo, hackathon speed.

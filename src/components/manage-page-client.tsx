@@ -61,8 +61,8 @@ export function ManagePageClient({ masterToken }: { masterToken: string }) {
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-2xl">🏆</span>
-            <h1 className="text-2xl font-bold text-amber-400">Market-Alchemy AI</h1>
+            <span className="text-2xl"></span>
+            <h1 className="text-2xl font-bold text-amber-400">Belfort Tips</h1>
           </div>
           <p className="text-zinc-500 text-sm">
             Manage alerts for <span className="text-zinc-300">{user.email}</span>

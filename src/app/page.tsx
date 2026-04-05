@@ -3,15 +3,20 @@ import { RegistrationForm } from '@/components/registration-form';
 export default function Home() {
   return (
     <main className="min-h-screen flex flex-col items-center justify-center px-4 py-16">
+      {/* Navbar */}
+    <nav className="w-full flex items-center px-6 py-4 absolute top-0 left-0">
+      <span className="text-amber-400 font-bold text-xl">🏆 Belfort Tips</span>
+    </nav>
+
       {/* Hero */}
       <div className="text-center mb-12 max-w-2xl">
-        <div className="text-5xl mb-4">🏆</div>
+        <div className="text-5xl mb-4"></div>
         <h1 className="text-4xl font-bold text-amber-400 mb-3 tracking-tight">
-          Market-Alchemy AI
+          Flip Earnings Effortlessly
         </h1>
         <p className="text-zinc-400 text-lg leading-relaxed">
-          Set-it-and-forget-it deal scouting across Facebook Marketplace, OfferUp,
-          Craigslist. Enter your email to get started — no password needed.
+          Stay ahead of the competition by finding timely deals across the web.       
+          Set your preferences, and let us do the heavy lifting for you.
         </p>
       </div>
 
