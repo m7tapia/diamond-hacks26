@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
 import { generateToken } from '@/lib/tokens';
-import { sendWelcomeEmail, sendMagicLinkEmail } from '@/lib/email';
 import { RegisterSchema } from '@/lib/validators';
 
 export async function POST(req: NextRequest) {
@@ -20,19 +19,7 @@ export async function POST(req: NextRequest) {
       .select('id, email, master_token, created_at')
       .eq('email', email)
       .single();
-
-    if (existing) {
-      // Send magic link to existing user (best-effort)
-      sendMagicLinkEmail(email, existing.master_token).catch((e) =>
-        console.error('[email] Magic link failed:', e)
-      );
-      return NextResponse.json({
-        exists: true,
-        message: 'Sign-in link sent to your email',
-        manageUrl: `/manage/${existing.master_token}`,
-      });
-    }
-
+    
     // Create new user
     const master_token = generateToken();
     const { data: newUser, error } = await supabase
@@ -45,11 +32,6 @@ export async function POST(req: NextRequest) {
       console.error('Failed to create user:', error);
       return NextResponse.json({ error: 'Failed to create account' }, { status: 500 });
     }
-
-    // Send welcome email (best-effort — don't block the user)
-    sendWelcomeEmail(newUser).catch((e) =>
-      console.error('[email] Welcome email failed:', e)
-    );
 
     return NextResponse.json({
       exists: false,
