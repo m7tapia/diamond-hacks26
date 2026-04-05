@@ -27,6 +27,7 @@ export function RegistrationForm() {
       const data = await res.json();
 
       if (res.status === 404 || res.status === 403) {
+        // User doesn't exist or password not set, try to create new account
         res = await fetch('/api/users', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -34,15 +35,8 @@ export function RegistrationForm() {
         });
       }
 
-      const finalData = await res.json();
-
       if (!res.ok) {
-        setMessage({ type: 'error', text: finalData.error ?? 'Something went wrong' });
-        return;
-      }
-
-      if (finalData.master_token) {
-        window.location.href = `/manage/${finalData.master_token}`;
+        setMessage({ type: 'error', text: data.error ?? 'Something went wrong' });
         return;
       }
 
@@ -51,7 +45,8 @@ export function RegistrationForm() {
         window.location.href = `/manage/${data.master_token}`;
         return;
       }
-    } catch {
+    } catch (error) {
+      console.error('Registration error:', error);
       setMessage({ type: 'error', text: 'Network error — please try again' });
     } finally {
       setLoading(false);
