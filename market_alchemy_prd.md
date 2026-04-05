@@ -1,4 +1,4 @@
-# Market-Alchemy AI — PRD (Combined: Python & TypeScript Stacks)
+# Belfort Tips — PRD (Combined: Python & TypeScript Stacks)
 
 ---
 
@@ -33,7 +33,7 @@
 
 ## 1) Product Summary
 
-Market-Alchemy AI is a set-it-and-forget-it deal-scouting service built for buyers and flippers who are always hunting for good deals across multiple categories at once. The user registers their email, then adds as many search alerts as they want — each with its own item, location, radius, and check-in interval. The app runs each alert on its own schedule, scraping Facebook Marketplace, OfferUp, Craigslist, and eBay, scoring every listing with a Scout Score, and emailing the user a rich per-item digest of the best-value finds. No marketplace login is required. There is no in-app review queue. The entire experience lives in the email.
+Belfort Tips is a set-it-and-forget-it deal-scouting service built for buyers and flippers who are always hunting for good deals across multiple categories at once. The user registers their email, then adds as many search alerts as they want — each with its own item, location, radius, and check-in interval. The app runs each alert on its own schedule, scraping Facebook Marketplace, OfferUp, Craigslist, and eBay, scoring every listing with a Scout Score, and emailing the user a rich per-item digest of the best-value finds. No marketplace login is required. There is no in-app review queue. The entire experience lives in the email.
 
 ---
 
@@ -194,9 +194,9 @@ Each alert produces its own separate email digest. If a user has 5 active alerts
 
 ### 7.2 Email Subject Line
 ```
-🏆 Market-Alchemy: [X] deals found for "[item]" near [location]
+ Market-Alchemy: [X] deals found for "[item]" near [location]
 ```
-Example: `🏆 Market-Alchemy: 12 deals found for "road bike" near Bakersfield, CA`
+Example: ` Market-Alchemy: 12 deals found for "road bike" near Bakersfield, CA`
 
 ### 7.3 Email Contents
 The digest contains **all good-value listings** found in that run that meet the minimum Scout Score threshold. Listings are sorted by effective Scout Score (raw + recency boost), highest first.
@@ -220,7 +220,7 @@ Every listing card in the email contains:
 ### 7.5 Full Email Structure
 ```
 ────────────────────────────────────────────
-  🏆 MARKET-ALCHEMY DEAL DIGEST
+   MARKET-ALCHEMY DEAL DIGEST
   Road Bike · Bakersfield, CA · April 4, 2026 · 9:00 AM
 ────────────────────────────────────────────
 
@@ -278,7 +278,7 @@ Recently replaced tires and cables. Asking $250 firm, local pickup only.
 ────────────────────────────────────────────
 
 Stop road bike emails  |  Manage all my alerts
-Sent by Market-Alchemy AI · You're receiving this because you set up a "road bike" alert.
+Sent by Belfort Tips · You're receiving this because you set up a "road bike" alert.
 ```
 
 ### 7.6 Minimum Quality Threshold
