@@ -20,7 +20,10 @@ export async function POST(req: NextRequest) {
       .eq('email', email)
       .single();
     
-    // Create new user
+    if (existing) {
+      return NextResponse.json({ manageUrl: `/manage/${existing.master_token}` });
+    }
+
     const master_token = generateToken();
     const { data: newUser, error } = await supabase
       .from('users')
@@ -28,7 +31,7 @@ export async function POST(req: NextRequest) {
       .select()
       .single();
 
-    if (error || !newUser) {
+    if (error) {
       console.error('Failed to create user:', error);
       return NextResponse.json({ error: 'Failed to create account' }, { status: 500 });
     }
@@ -37,7 +40,6 @@ export async function POST(req: NextRequest) {
       exists: false,
       master_token: newUser.master_token,
       message: 'Welcome email sent',
-      manageUrl: `/manage/${newUser.master_token}`,
     });
   } catch (e) {
     console.error('/api/users error:', e);
