@@ -1,6 +1,7 @@
 import { AlertInterval } from '@/types';
 
 export const INTERVAL_LABELS: Record<AlertInterval, string> = {
+  '1min': 'Every minute (demo)',
   hourly: 'Hourly',
   '6h': 'Every 6 hours',
   daily: 'Daily',
@@ -8,6 +9,7 @@ export const INTERVAL_LABELS: Record<AlertInterval, string> = {
 };
 
 export const INTERVAL_CRON: Record<AlertInterval, string> = {
+  '1min': '* * * * *',
   hourly: '0 * * * *',
   '6h': '0 */6 * * *',
   daily: '0 9 * * *',
@@ -15,6 +17,7 @@ export const INTERVAL_CRON: Record<AlertInterval, string> = {
 };
 
 export const INTERVAL_MS: Record<AlertInterval, number> = {
+  '1min': 60 * 1000,
   hourly: 60 * 60 * 1000,
   '6h': 6 * 60 * 60 * 1000,
   daily: 24 * 60 * 60 * 1000,

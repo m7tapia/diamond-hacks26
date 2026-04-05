@@ -6,7 +6,9 @@ import { MIN_SCOUT_SCORE, INTERVAL_MS } from './constants';
 import { Alert, User } from '@/types';
 
 export async function runAlertPipeline(alertId: string): Promise<void> {
-  console.log(`[pipeline] Starting run for alert ${alertId}`);
+  console.log(`\n========================================`);
+  console.log(`[pipeline] 🚀 STARTING PIPELINE FOR ALERT ${alertId}`);
+  console.log(`========================================\n`);
 
   // 1. Load alert + user
   const { data: alert, error: alertErr } = await supabase
@@ -36,9 +38,10 @@ export async function runAlertPipeline(alertId: string): Promise<void> {
   const typedUser = user as User;
 
   // 2. Scrape all platforms
-  console.log(`[pipeline] Scraping "${typedAlert.item}" near ${typedAlert.location}`);
+  console.log(`[pipeline] 🔍 Scraping "${typedAlert.item}" near ${typedAlert.location}`);
+  console.log(`[pipeline] Launching Browser Use agents (this takes 2-3 minutes)...`);
   const rawListings = await scrapeAll(typedAlert.item, typedAlert.location, typedAlert.radius_miles);
-  console.log(`[pipeline] Got ${rawListings.length} raw listings`);
+  console.log(`[pipeline] ✓ Got ${rawListings.length} raw listings from agents`);
 
   // 3. Load seen listing IDs
   const { data: seenRows } = await supabase
@@ -52,7 +55,11 @@ export async function runAlertPipeline(alertId: string): Promise<void> {
 
   // 4. Score and rank listings
   const scoredListings = await scoreListings(typedAlert.item, rawListings, seenIds);
-  scoredListings.sort((a, b) => b.effectiveScore - a.effectiveScore);
+  // Sort by newest first (isNew = true first), then by score
+  scoredListings.sort((a, b) => {
+    if (a.isNew !== b.isNew) return a.isNew ? -1 : 1;
+    return b.effectiveScore - a.effectiveScore;
+  });
 
   // 5. Filter by minimum threshold
   const qualifiedListings = scoredListings.filter((l) => l.effectiveScore >= MIN_SCOUT_SCORE);

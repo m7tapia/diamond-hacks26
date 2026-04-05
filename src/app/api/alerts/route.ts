@@ -55,13 +55,17 @@ export async function POST(req: NextRequest) {
     scheduleAlert(alert.id, interval as AlertInterval);
 
     // Fire first run immediately in background
+    console.log(`[api/alerts] 🤖 Launching agents for first run of alert ${alert.id}`);
     import('@/lib/pipeline').then(({ runAlertPipeline }) => {
       runAlertPipeline(alert.id).catch((e) =>
         console.error('First run failed for alert', alert.id, e)
       );
     });
 
-    return NextResponse.json({ alert }, { status: 201 });
+    return NextResponse.json({ 
+      alert,
+      message: 'Alert created! Our AI agents are searching marketplaces now. You\'ll receive an email in 2-3 minutes with the best deals.'
+    }, { status: 201 });
   } catch (e) {
     console.error('/api/alerts POST error:', e);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });

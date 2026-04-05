@@ -1,6 +1,6 @@
-export type AlertInterval = 'hourly' | '6h' | 'daily' | 'weekly';
+export type AlertInterval = '1min' | 'hourly' | '6h' | 'daily' | 'weekly';
 export type AlertStatus = 'active' | 'paused' | 'cancelled';
-export type Platform = 'facebook' | 'offerup' | 'craigslist';
+export type Platform = 'offerup';
 
 export interface User {
   id: string;
@@ -32,8 +32,12 @@ export interface RawListing {
   platformListingId: string;
   distance: string | null;
   description: string | null;
+  fullDescription: string | null;
   sellerInfo: string | null;
+  sellerReviews: string | null;
+  timePosted: string | null;
   photoCount: number;
+  highlights: string[];
 }
 
 export interface ScoredListing extends RawListing {
