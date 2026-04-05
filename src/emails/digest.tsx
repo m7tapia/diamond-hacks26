@@ -45,7 +45,7 @@ export function DigestEmail({ alert, listings, manageUrl, unsubscribeUrl }: Dige
         <Container style={container}>
           {/* Header */}
           <Section style={header}>
-            <Heading style={headerTitle}>🏆 MARKET-ALCHEMY DEAL DIGEST</Heading>
+            <Heading style={headerTitle}> MARKET-ALCHEMY DEAL DIGEST</Heading>
             <Text style={headerSub}>
               {alert.item} · {alert.location} · {date}
             </Text>
@@ -120,7 +120,7 @@ export function DigestEmail({ alert, listings, manageUrl, unsubscribeUrl }: Dige
               </a>
             </Text>
             <Text style={footerSmall}>
-              Sent by Market-Alchemy AI · You&apos;re receiving this because you
+              Sent by Belfort Tips · You&apos;re receiving this because you
               set up a &quot;{alert.item}&quot; alert.
             </Text>
           </Section>
