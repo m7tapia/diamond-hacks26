@@ -19,7 +19,7 @@ export default function Home() {
       <div className="w-full max-w-md bg-zinc-900 border border-zinc-800 rounded-xl p-8 shadow-xl">
         <h2 className="text-xl font-semibold text-zinc-100 mb-2">Get Started</h2>
         <p className="text-zinc-500 text-sm mb-6">
-          Create an account or sign in with your email and password. Your account and alerts are yours alone.
+          Choose a professional sign in or sign up experience. Separate flows keep your account secure and easy to use.
         </p>
         <RegistrationForm />
       </div>
