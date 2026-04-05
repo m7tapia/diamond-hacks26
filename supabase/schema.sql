@@ -19,7 +19,7 @@ CREATE TABLE alerts (
   location TEXT NOT NULL,
   radius_miles INT NOT NULL DEFAULT 20,
   interval TEXT NOT NULL DEFAULT 'daily'
-    CHECK (interval IN ('hourly', '6h', 'daily', 'weekly')),
+    CHECK (interval IN ('1min', 'hourly', '6h', 'daily', 'weekly')),
   status TEXT NOT NULL DEFAULT 'active'
     CHECK (status IN ('active', 'paused', 'cancelled')),
   created_at TIMESTAMPTZ DEFAULT now(),

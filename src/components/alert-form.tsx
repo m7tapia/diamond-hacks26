@@ -27,11 +27,13 @@ export function AlertForm({ masterToken, existing, onSuccess, onCancel }: AlertF
   const [interval, setInterval] = useState(existing?.interval ?? 'daily');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setLoading(true);
     setError(null);
+    setSuccess(null);
 
     try {
       let res: Response;
@@ -61,7 +63,16 @@ export function AlertForm({ masterToken, existing, onSuccess, onCancel }: AlertF
         return;
       }
 
-      onSuccess();
+      if (!existing) {
+        // Show success message for new alerts
+        setSuccess('🤖 Agents are scouting now! You\'ll receive your first email in 2-3 minutes with the best deals we find.');
+        // Wait 2 seconds before calling onSuccess to let user see the message
+        setTimeout(() => {
+          onSuccess();
+        }, 3000);
+      } else {
+        onSuccess();
+      }
     } catch {
       setError('Network error — please try again');
     } finally {
@@ -111,6 +122,7 @@ export function AlertForm({ masterToken, existing, onSuccess, onCancel }: AlertF
               <SelectValue />
             </SelectTrigger>
             <SelectContent className="bg-zinc-800 border-zinc-700 text-zinc-100">
+              <SelectItem value="1min">Every minute (demo)</SelectItem>
               <SelectItem value="hourly">Hourly</SelectItem>
               <SelectItem value="6h">Every 6 hours</SelectItem>
               <SelectItem value="daily">Daily</SelectItem>
@@ -126,13 +138,20 @@ export function AlertForm({ masterToken, existing, onSuccess, onCancel }: AlertF
         </p>
       )}
 
+      {success && (
+        <div className="text-sm bg-emerald-900/40 text-emerald-400 border border-emerald-800 rounded-lg px-3 py-2">
+          <p className="font-semibold mb-1">✓ Alert created!</p>
+          <p>{success}</p>
+        </div>
+      )}
+
       <div className="flex gap-3">
         <Button
           type="submit"
-          disabled={loading}
+          disabled={loading || !!success}
           className="bg-amber-500 hover:bg-amber-400 text-zinc-950 font-semibold"
         >
-          {loading ? 'Saving...' : existing ? 'Save Changes' : '🚀 Start Scouting'}
+          {loading ? '🤖 Launching agents...' : existing ? 'Save Changes' : '🚀 Start Scouting'}
         </Button>
         {onCancel && (
           <Button
